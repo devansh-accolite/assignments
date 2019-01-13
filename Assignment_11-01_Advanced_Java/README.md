@@ -1,4 +1,5 @@
 # Advanced Java
 
-Compile com/au/collections/practice/\*.java
-Execute com/au/collections/practice/MainClass
+Compile ```javac com/au/collections/practice/\*.java```
+
+Execute ```java com/au/collections/practice/MainClass```
