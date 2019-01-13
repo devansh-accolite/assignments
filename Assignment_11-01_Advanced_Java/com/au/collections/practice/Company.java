@@ -10,7 +10,16 @@ public class Company {
 	public Company(String name, Address address) {
 		this.name = name;
 		this.address = address;
-		this.employeeTreeSet = new TreeSet<>((e1, e2) -> (e1.getAge() > e2.getAge()) ? 1 : (e1.getAge() == e2.getAge()) ? 0 : -1);
+		this.employeeTreeSet = new TreeSet<>((e1, e2) ->
+				(e1.getAge() > e2.getAge() ?
+						1 :
+						(e1.getAge() == e2.getAge() ?
+								(e1.getId() > e2.getId() ?
+										1 :
+										(e1.getId() == e2.getId()) ?
+												(e1.getName().compareToIgnoreCase(e2.getName())) :
+												-1) :
+								-1)));
 	}
 	
 	public String getName() {
