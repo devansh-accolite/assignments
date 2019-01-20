@@ -17,14 +17,17 @@ public class TaxiGenerator implements Runnable {
     public void run() {
         while(true) {
             try {
+                // Generate new taxi
                 Taxi taxi = new Taxi(taxiQueue, taxiStand);
                 taxi.setTaxiId(taxiId);
 
+                // Put generated taxi to taxi queue
                 taxiQueue.put(taxi);
                 taxi.IN_QUEUE.compareAndSet(false, true);
 
                 System.out.println(TaxiStand.sdf.format(new Date().getTime()) + ": Taxi <" + taxiId + "> added to queue");
 
+                // Start generated taxi thread
                 new Thread(taxi).start();
 
                 taxiId++;

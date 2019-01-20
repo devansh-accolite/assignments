@@ -21,7 +21,7 @@ public class Passenger implements Runnable {
     public Passenger(LinkedBlockingQueue<Passenger> passengers, LinkedBlockingQueue<Taxi> taxiStand) {
         this.passengers = passengers;
         this.taxiStand = taxiStand;
-        this.waitDuration = 500;
+        this.waitDuration = 1000;
     }
 
     public int getPassengerId() {
@@ -44,10 +44,12 @@ public class Passenger implements Runnable {
     public void run() {
         while(!this.IN_TAXI) {
             try {
+                // Check for every taxi in taxi stand
                 for (Taxi taxi : taxiStand) {
                     if (taxi.getDestination() == null) {
+                        // If taxi has no destination assigned
                         if (taxi.addPassenger(this)) {
-                            if(taxi.setDestination(this.destination)) {
+                            if (taxi.setDestination(this.destination)) {
                                 this.IN_TAXI = true;
                                 System.out.println(TaxiStand.sdf.format(new Date().getTime()) + ": Passenger <"
                                         + this.getPassengerId() + "> added to Taxi <"
@@ -58,6 +60,7 @@ public class Passenger implements Runnable {
                             }
                         }
                     } else if (taxi.getDestination() == this.destination && taxi.getCapacity() < Taxi.MAX_CAPACITY) {
+                        // If taxi destination matches passenger destination
                         if (taxi.addPassenger(this)) {
                             this.IN_TAXI = true;
 
@@ -70,6 +73,7 @@ public class Passenger implements Runnable {
                     }
                 }
 
+                // Reduce sleep time for thread of passenger waiting for long time
                 this.waitDuration -= Passenger.WAIT_CHANGE;
                 if(this.waitDuration < Passenger.MIN_WAIT) {
                     this.waitDuration = Passenger.MIN_WAIT;

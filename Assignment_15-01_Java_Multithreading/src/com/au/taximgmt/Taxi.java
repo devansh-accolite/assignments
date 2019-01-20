@@ -64,6 +64,7 @@ public class Taxi implements Runnable {
             try {
                 if(this.IN_QUEUE.get()) {
                     if (this == taxiQueue.peek() && taxiStand.size() < TaxiStand.STAND_SIZE) {
+                        // If taxi can be moved to taxi stand
                         if(this.IN_QUEUE.compareAndSet(true, false)) {
                             taxiQueue.remove(this);
                         }
@@ -78,6 +79,7 @@ public class Taxi implements Runnable {
                 }
                 if(this.IN_STAND.get()) {
                     if(this.waitTime == MAX_WAIT_TIME || this.passengerList.size() == MAX_CAPACITY) {
+                        // If taxi has waited for 60 seconds for additional passenger
                         this.IN_STAND.compareAndSet(true, false);
                         if(this.DEPART.compareAndSet(false, true)) {
                             taxiStand.remove(this);
@@ -98,6 +100,7 @@ public class Taxi implements Runnable {
                             }
                         }
                     } else {
+                        // Wait for passenger
                         this.waitTime += DELAY;
                         Thread.sleep(DELAY);
                     }

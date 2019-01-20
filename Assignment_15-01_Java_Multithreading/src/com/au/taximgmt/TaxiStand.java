@@ -19,8 +19,11 @@ public class TaxiStand {
         TaxiGenerator taxiGenerator = new TaxiGenerator(taxiQueue, taxiStand);
         PassengerGenerator passengerGenerator = new PassengerGenerator(passengers, taxiStand);
 
+        // Starting taxi generator thread
         new Thread(taxiGenerator).start();
         System.out.println(sdf.format(new Date().getTime()) + ": Taxi generator started...");
+
+        // Starting passenger generator thread
         new Thread(passengerGenerator).start();
         System.out.println(sdf.format(new Date().getTime()) + ": Passenger generator started...");
     }

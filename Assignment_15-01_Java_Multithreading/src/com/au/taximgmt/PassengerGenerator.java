@@ -17,13 +17,18 @@ public class PassengerGenerator implements Runnable {
     public void run() {
         while(true) {
             try {
+                // Generate new passenger
                 Passenger passenger = new Passenger(passengers, taxiStand);
                 passenger.setPassengerId(passengerId);
                 passenger.setRandomDestination();
 
+                // Put generated passenger to passenger queue
+                passengers.put(passenger);
+
                 System.out.println(TaxiStand.sdf.format(new Date().getTime()) + ": Passenger <"
                         + passengerId + "> travelling to " + passenger.getDestination() + " added to queue");
 
+                // Start generated passenger thread
                 new Thread(passenger).start();
 
                 passengerId++;
