@@ -9,7 +9,7 @@ public class Passenger implements Runnable {
         WHITEFIELD, SARJAPUR, KRPURAM, INDIRANAGAR, MGROAD, HEBBAL, JAYANAGAR, PEENYA, HSRLAYOUT, KORAMANGLA
     }
 
-    private static final int MIN_WAIT = 50, WAIT_CHANGE = 10;
+    private static final int MIN_WAIT = 100, WAIT_CHANGE = 50;
 
     public boolean IN_TAXI;
     private int passengerId, waitDuration;
