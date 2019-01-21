@@ -17,8 +17,8 @@
 
 ## Class implementation
 ### TaxiStand.java
-- Creates Passenger and Taxi queues.
-- Creates Taxi stand of size 5.
+- Creates Passenger and Taxi queues using LinkedBlockingQueue class.
+- Creates Taxi stand (LinkedBlockingQueue) of size 5.
 - Starts Passenger generator and Taxi generator threads.
 ### TaxiGenerator.java
 - Generates new Taxi objects every 15 seconds and adds to Taxi queue.
@@ -28,6 +28,7 @@
 - Passengers are initialized with random destination.
 ### Taxi.java
 - Checks taxi stand for empty slot every 1 second and moves taxi from queue to stand.
+- Uses synchronized method setDestination to set the destination while avoiding race conditions.
 - Sets taxi destination once a passenger boards empty taxi and starts a timer for 60 seconds after which taxi leaves the stand.
 - If maxmimum number of passengers (i.e. 4) have boarded the taxi before that, then taxi leaves the stand immediately.
 ### Passenger.java
