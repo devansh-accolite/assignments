@@ -1,5 +1,8 @@
 Manifest-Version: 1.0
+Implementation-Title: assignment Maven Webapp
+Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: devansh.sharma
+Implementation-Vendor-Id: com.au.spring
 Build-Jdk: 1.8.0_191
 Created-By: Maven Integration for Eclipse
 
