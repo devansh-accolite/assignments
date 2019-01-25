@@ -1,0 +1,11 @@
+Factory method
+	- Produces implementations for interfaces
+	- Uses interfaces for object creation
+	- Relies on subclasses for class instantiation
+	- Creates only one product
+
+Abstract Factory
+	- Produces factories itself
+	- Gives interface for creating families of related objects
+	- Relies on other objects for class instantiation via composition
+	- Creates family of related products
