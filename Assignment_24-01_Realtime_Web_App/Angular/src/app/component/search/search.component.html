@@ -1,0 +1,9 @@
+<div class="bookLinks jumbotron">
+  <ul *ngFor="let b of book">
+    <li>
+      <a [routerLink]="['/book', b.id]" class="bookLink">{{b.bookName}} by {{b.authorName}}</a>
+      <button type="button" class="searchButton btn btn-danger" (click)="removeBook(b)">Remove Book</button>
+      <button type="button" class="searchButton btn btn-success" (click)="addBookToCart(b)">Add Book</button>
+    </li>
+  </ul>
+</div>

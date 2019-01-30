@@ -1,0 +1,47 @@
+<!-- [(ngModel)]: binding to component file -->
+<div class="jumbotron">
+    <table>
+        <h3>Add a Book:</h3>
+        <tr>
+            <td>
+                <label for="bookId">ID:</label>
+            </td>
+            <td>
+                <input type="number" id="bookId" [(ngModel)]="id">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="title">Title:</label>
+            </td>
+            <td>
+                <input type="text" id="title" [(ngModel)]="bookName">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="desc">Description:</label>
+            </td>
+            <td>
+                <input type="text" id="desc" [(ngModel)]="description">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="author">Author:</label>
+            </td>
+            <td>
+                <input type="text" id="author" [(ngModel)]="authorName">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="price">Price:</label>
+            </td>
+            <td>
+                <input type="number" id="price" [(ngModel)]="price">
+            </td>
+        </tr>
+        <button type="button" class="btn btn-primary" (click)="postData()">Add book</button>
+    </table>
+</div>

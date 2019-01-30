@@ -1,0 +1,37 @@
+<div *ngIf="!bookId" class="jumbotron">
+  <h3>Find book by ID:</h3>
+  <table>
+    <tr>
+      <td>ID:</td>
+      <td><input type="number" id="bookId" [(ngModel)]="id"></td>
+    </tr>
+    <br />
+    <button type="button" class="btn btn-primary" (click)="redirectTo()">Find book</button>
+  </table>
+</div>
+<div *ngIf="bookId">
+  <div class="jumbotron" *ngIf="book">
+    <h3>{{book.bookName}}</h3>
+    <table>
+      <tr>
+        <td><b>Author:</b></td>
+        <td></td>
+        <td>{{book.authorName}}</td>
+      </tr>
+      <tr>
+        <td><b>Description:</b></td>
+        <td></td>
+        <td>{{book.description}}</td>
+      </tr>
+      <tr>
+        <td><b>Price:</b></td>
+        <td></td>
+        <td>{{book.price}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="jumbotron sectionheader" *ngIf="!book">
+    No info on this book !!!
+  </div>
+</div>
